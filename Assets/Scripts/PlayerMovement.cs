@@ -8,10 +8,11 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D _rigidbody;
     private Vector2 _movementInput;
 
-    [SerializeField] private float moveSpeed = 5;
+    private float moveSpeed;
     void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
+        moveSpeed = GetComponent<Entity>().Attributes.GetAttribute(AttributeType.WalkSpeed);
     }
 
     void FixedUpdate()

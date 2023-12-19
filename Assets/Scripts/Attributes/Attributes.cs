@@ -53,4 +53,26 @@ public class Attributes
 
         return 0;
     }
+
+    public float GetMinimum(AttributeType type)
+    {
+        foreach (AttributeInfo attribute in attributes)
+        {
+            if (attribute.type == type)
+                return attribute.minValue;
+        }
+
+        return 0;
+    }
+
+    public float GetMaximum(AttributeType type)
+    {
+        foreach (AttributeInfo attribute in attributes)
+        {
+            if (attribute.type == type)
+                return attribute.maxValue;
+        }
+
+        return 0;
+    }
 }

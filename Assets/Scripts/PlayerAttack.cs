@@ -8,7 +8,16 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private ParticleSystem _attackPartile;
     [SerializeField] private LayerMask _enemiesLayer;
 
-    [SerializeField] private float range = 0.75f;
+    private float range = 0.75f;
+    private float damage;
+
+    private void Awake()
+    {
+        Entity entity = GetComponent<Entity>();
+
+        damage = entity.Attributes.GetAttribute(AttributeType.AttackDamage);
+        range = entity.Attributes.GetAttribute(AttributeType.AttackRange);
+    }
     void Update()
     {
         
@@ -26,7 +35,7 @@ public class PlayerAttack : MonoBehaviour
 
         foreach (Collider2D hit in enemiesHit)
         {
-            Destroy(hit.gameObject);
+            hit.GetComponent<EnemyHitPoints>().TakeDamage(damage);
         }
     }
 

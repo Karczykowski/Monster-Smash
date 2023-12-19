@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PlayerDeath : MonoBehaviour
+public class EnemyDeath : MonoBehaviour
 {
-    public void DestroyPlayer()
+    public void DestroyEnemy()
     {
         Destroy(gameObject);
     }
