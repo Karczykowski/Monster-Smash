@@ -3,5 +3,7 @@ public enum AttributeType
     HitPoints,
     WalkSpeed,
     AttackDamage,
-    AttackRange
+    AttackRange,
+    AttackSpeed,
+    PointsWorth
 }

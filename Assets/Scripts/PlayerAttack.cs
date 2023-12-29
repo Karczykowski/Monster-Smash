@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     private float range = 0.75f;
     private float damage;
+    private float attackSpeed;
+    private float attackSpeedConst;
 
     private void Awake()
     {
@@ -17,13 +19,23 @@ public class PlayerAttack : MonoBehaviour
 
         damage = entity.Attributes.GetAttribute(AttributeType.AttackDamage);
         range = entity.Attributes.GetAttribute(AttributeType.AttackRange);
+        attackSpeed = 0;
+        attackSpeedConst = entity.Attributes.GetAttribute(AttributeType.AttackSpeed);
     }
     void Update()
     {
-        
+        if(attackSpeed > 0)
+        {
+            attackSpeed -= Time.deltaTime;
+        }
+
         if (Input.GetMouseButtonDown(0))
         {
-            SwingAttack();
+            if(attackSpeed <= 0)
+            {
+                SwingAttack();
+                attackSpeed = attackSpeedConst;
+            }
         }
     }
 
